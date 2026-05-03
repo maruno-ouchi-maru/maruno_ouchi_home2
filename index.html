@@ -100,7 +100,12 @@ body{
   font-weight:700;
 }
 
-/* コパイロット提案のスタイル */
+/* 改行調整用のクラス */
+.keep-all {
+  display: inline-block;
+  word-break: keep-all;
+}
+
 .hero h1 {
   font-size: 2.2rem;
   color: #2c5aa0;
@@ -235,7 +240,7 @@ section{margin-bottom:55px;}
 .trouble li{
   padding-left:1.8em;
   position:relative;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .trouble li::before{
@@ -329,9 +334,12 @@ section{margin-bottom:55px;}
 @media(max-width:600px){
   .header-flex{flex-direction:column; gap: 20px;}
   .mini-slider{width:200px;height:200px;}
-  .hero h1{font-size: 1.6rem;}
+  .hero h1{font-size: 1.5rem; line-height: 1.6;}
   .cards{grid-template-columns:1fr;}
   .floating-cta a{width:90vw; text-align:center; display: block;}
+  /* スマホでの強制改行解除 */
+  .hero-message br { display: none; }
+  .hero-message .keep-all { display: block; margin-bottom: 5px; }
 }
 </style>
 </head>
@@ -340,12 +348,14 @@ section{margin-bottom:55px;}
 
 <div class="main">
 
+  <!-- TOPリンク -->
   <div class="top-link">
     <a href="https://maruno-ouchi-maru.github.io/maruno_ouchi_home/" target="_blank">
       学習塾まるのおうちはこちら
     </a>
   </div>
 
+  <!-- HERO -->
   <div class="hero">
     <div class="header-flex">
       <img src="logo.png" class="logo" alt="まるのおうち ロゴ">
@@ -364,16 +374,28 @@ section{margin-bottom:55px;}
 
     <div class="badge">元小学校教諭による先生サポート</div>
     
-    <h1>若手教員の相談・授業サポート｜まるのおうち</h1>
+    <!-- 1. 見出しの改行調整 -->
+    <h1>
+      <span class="keep-all">若手教員の相談・</span><span class="keep-all">授業サポート｜</span><br>
+      <span class="keep-all">まるのおうち</span>
+    </h1>
+
+    <!-- 2. メッセージの改行調整 -->
     <p class="hero-message">
-      子どもをまるごと受けとめるように、<br>
-      先生の悩みも、まるごと受けとめたい。
+      <span class="keep-all">子どもをまるごと受けとめるように、</span><br>
+      <span class="keep-all">先生の悩みも、まるごと受けとめたい。</span>
     </p>
     
     <a href="https://forms.gle/7sFxEHVQr9X4b1eM8" class="cta-btn">少し話してみる</a>
-    <p class="info-note">※秘密厳守。職場の誰かに知られることはありません。</p>
+    
+    <!-- 3. 注意書きの改行調整 -->
+    <p class="info-note" style="line-height: 1.6;">
+      ※秘密厳守。<br>
+      職場の誰かに知られることはありません。
+    </p>
   </div>
 
+  <!-- プロフィール -->
   <section>
     <h2 class="title">サポートする人</h2>
     <div class="content-narrow">
@@ -405,6 +427,7 @@ section{margin-bottom:55px;}
     </div>
   </section>
 
+  <!-- お悩み（4. リストの改行調整） -->
   <section>
     <h2 class="title">こんなお悩みに</h2>
     <div class="content-narrow">
@@ -412,13 +435,20 @@ section{margin-bottom:55px;}
         <ul>
           <li>授業の準備が終わらない、進め方に自信がない</li>
           <li>学級がザワついて、指示が通らなくなってきた</li>
-          <li>職員室での人間関係や、保護者対応がしんどい</li>
-          <li>誰かに相談したいけど、弱音を吐ける人がいない</li>
+          <li>
+            <span class="keep-all">職員室での人間関係や、</span><br>
+            <span class="keep-all">保護者対応がしんどい</span>
+          </li>
+          <li>
+            <span class="keep-all">誰かに相談したいけど、</span><br>
+            <span class="keep-all">弱音を吐ける人がいない</span>
+          </li>
         </ul>
       </div>
     </div>
   </section>
 
+  <!-- メニュー -->
   <section>
     <h2 class="title">サポートメニュー</h2>
     <p style="text-align: center; margin-bottom: 20px; font-size: 0.9rem; color: #666;">（クリックで詳細を表示します）</p>
@@ -469,7 +499,6 @@ section{margin-bottom:55px;}
 </div>
 
 <script>
-// スライダー修正：読み込み完了後に実行
 window.addEventListener('DOMContentLoaded', () => {
   const slides = document.querySelectorAll(".mini-slide");
   const totalSlides = slides.length;
@@ -485,7 +514,6 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// プロフィールの開閉
 function toggleProfile(el) {
   el.classList.toggle("active");
   const btn = el.querySelector(".profile-toggle-btn");
@@ -496,7 +524,6 @@ function toggleProfile(el) {
   }
 }
 
-// カードの開閉
 function toggleCard(el){
   const isActive = el.classList.contains("active");
   document.querySelectorAll(".card").forEach(c=>{
@@ -507,7 +534,6 @@ function toggleCard(el){
   }
 }
 
-// スクロールでボタン表示
 const cta=document.querySelector(".floating-cta");
 window.addEventListener("scroll",()=>{
   if(window.scrollY>400){
