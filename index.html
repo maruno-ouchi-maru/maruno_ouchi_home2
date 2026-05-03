@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>若手教員サポート｜まるのおうち</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  background:#eaf4ff;
+  background-image:radial-gradient(#d2e7ff 1.5px, transparent 1.5px);
+  background-size:34px 34px;
+  font-family:'Zen Maru Gothic',sans-serif;
+  color:#444;
+  line-height:1.8;
+  padding:20px;
+}
+
+.main{
+  max-width:1000px;
+  margin:auto;
+  background:#fff;
+  border-radius:40px;
+  padding:50px 35px;
+  box-shadow:0 10px 40px rgba(100,140,200,0.15);
+}
+
+/* 上リンク */
+.top-link{
+  text-align:right;
+  margin-bottom:10px;
+}
+
+.top-link a{
+  font-size:0.85rem;
+  color:#2c5aa0;
+  text-decoration:none;
+  border-bottom:1px solid #b8d7ff;
+}
+
+/* HERO */
+.hero{text-align:center;margin-bottom:50px;}
+
+.header-flex{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:40px;
+  margin-bottom:20px;
+}
+
+.logo{width:140px;}
+
+.mini-slider{
+  width:260px;
+  height:260px;
+  border-radius:50%;
+  overflow:hidden;
+  position:relative;
+  border:6px solid #b8d7ff;
+  background:#fff;
+}
+
+.mini-slide{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  opacity:0;
+  transition:opacity 1s;
+}
+
+.mini-slide.active{opacity:1;}
+
+.mini-bubble{
+  font-family:'Yomogi',cursive;
+  font-size:1.1rem;
+  color:#2c5aa0;
+  margin-top:8px;
+}
+
+.badge{
+  display:inline-block;
+  background:#b8d7ff;
+  color:#2c5aa0;
+  padding:6px 14px;
+  border-radius:999px;
+  font-size:.85rem;
+  margin-bottom:15px;
+}
+
+.hero h1{
+  font-size:2.2rem;
+  color:#2c5aa0;
+  margin-bottom:15px;
+}
+
+.hero p{font-size:1.05rem;}
+
+.cta-btn{
+  display:inline-block;
+  background:#2c5aa0;
+  color:#fff;
+  padding:16px 32px;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:700;
+  margin-top:18px;
+}
+
+/* sections */
+section{margin-bottom:45px;}
+
+.title{
+  font-size:1.3rem;
+  border-left:6px solid #b8d7ff;
+  padding-left:10px;
+  margin-bottom:15px;
+  color:#2c5aa0;
+}
+
+.content-narrow{
+  max-width:650px;
+  margin:0 auto;
+}
+
+.philosophy{
+  background:#fffbea;
+  border-radius:20px;
+  padding:22px;
+  font-family:'Yomogi',cursive;
+}
+
+.trouble{
+  background:#f5faff;
+  border-radius:25px;
+  padding:25px;
+}
+
+.trouble ul{list-style:none;}
+
+.trouble li{
+  padding-left:1.5em;
+  position:relative;
+}
+
+.trouble li::before{
+  content:"・";
+  position:absolute;
+  left:0;
+}
+
+/* カード */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+}
+
+.card{
+  background:#f7fbff;
+  border:2px solid #d8e9ff;
+  border-radius:25px;
+  padding:22px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.card:hover{transform:translateY(-5px);}
+
+.card.active{
+  transform:scale(1.03);
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+.card-detail{
+  margin-top:15px;
+  line-height:1.9;
+  max-height:0;
+  overflow:hidden;
+  opacity:0;
+  transition:0.3s;
+}
+
+.card.active .card-detail{
+  max-height:300px;
+  opacity:1;
+}
+
+/* CTA */
+.floating-cta{
+  position:fixed;
+  bottom:15px;
+  left:50%;
+  transform:translateX(-50%);
+  opacity:0;
+  pointer-events:none;
+  transition:0.3s;
+}
+
+.floating-cta a{
+  background:#2c5aa0;
+  color:#fff;
+  padding:14px 26px;
+  border-radius:999px;
+  text-decoration:none;
+}
+
+/* スマホ */
+@media(max-width:600px){
+.header-flex{flex-direction:column;}
+.mini-slider{width:180px;height:180px;}
+.cards{grid-template-columns:1fr;}
+.floating-cta a{width:90vw;text-align:center;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="main">
+
+<div class="hero">
+
+<!-- ★ここが追加された -->
+<div class="top-link">
+<a href="https://maruno-ouchi-maru.github.io/maruno_ouchi_home/" target="_blank">
+学習塾まるのおうちはこちら
+</a>
+</div>
+
+<div class="header-flex">
+<img src="logo.png" class="logo">
+
+<div>
+<div class="mini-slider">
+<img src="gurimaru.png" class="mini-slide active">
+<img src="gurimaru2.png" class="mini-slide">
+<img src="gurimaru3.png" class="mini-slide">
+<img src="gurimaru4.png" class="mini-slide">
+<img src="gurimaru5.png" class="mini-slide">
+</div>
+
+<div class="mini-bubble">
+ぼく、ぐり丸！<br>見守ってるよ☆
+</div>
+</div>
+</div>
+
+<div class="badge">まるのおうちが届ける先生サポート</div>
+
+<h1>
+先生だって、<br>
+ひとりで抱え込まなくていい。
+</h1>
+
+<p>
+授業も、学級も、気持ちも。<br>
+一人で抱え込まなくて大丈夫です。
+</p>
+
+<a href="https://forms.gle/7sFxEHVQr9X4b1eM8" class="cta-btn">少し話してみる</a>
+
+</div>
+
+<section>
+<h2 class="title">まるのおうちの想い</h2>
+<div class="content-narrow">
+<div class="philosophy">
+子どもをまるごと受けとめるように、<br>
+先生の悩みも、まるごと受けとめたい。
+</div>
+</div>
+</section>
+
+<section>
+<h2 class="title">こんなお悩みに</h2>
+<div class="content-narrow">
+<div class="trouble">
+<ul>
+<li>授業がうまくいかない</li>
+<li>学級が落ち着かない</li>
+<li>相談できる人がいない</li>
+<li>毎日しんどい</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section>
+<h2 class="title">サポートメニュー</h2>
+
+<div class="cards">
+
+<div class="card" onclick="toggleCard(this)">
+<h3>🌱 はじめての先生相談</h3>
+<p>15分／1,000円</p>
+<div class="card-detail">
+まずは少しだけ話してみたい方向け。<br>
+悩みがまとまっていなくても大丈夫です。
+</div>
+</div>
+
+<div class="card" onclick="toggleCard(this)">
+<h3>📘 授業ふり返りサポート</h3>
+<p>60分／5,000円</p>
+<div class="card-detail">
+授業の流れや子どもの反応をもとに、良かったところと次に意識するとよいところを整理します。<br><br>
+ダメ出しではなく、先生自身が次に進めるためのふり返りです。
+</div>
+</div>
+
+<div class="card" onclick="toggleCard(this)">
+<h3>🏫 学級経営もやもや整理</h3>
+<p>45分／3,500円</p>
+<div class="card-detail">
+クラスが落ち着かない、子どもとの関わり方に迷う、注意がうまく届かない。<br><br>
+そんな学級経営のもやもやを一緒にほどいていきます。
+</div>
+</div>
+
+<div class="card" onclick="toggleCard(this)">
+<h3>☕ 先生のための面談</h3>
+<p>30分／2,500円</p>
+<div class="card-detail">
+しんどさ、不安、自信のなさ、辞めたい気持ち。<br><br>
+安心して気持ちを出せる時間です。
+</div>
+</div>
+
+</div>
+</section>
+
+</div>
+
+<div class="floating-cta">
+<a href="https://forms.gle/7sFxEHVQr9X4b1eM8">少し話してみる</a>
+</div>
+
+<script>
+let i=0;
+const slides=document.querySelectorAll(".mini-slide");
+
+setInterval(()=>{
+const next=(i+1)%slides.length;
+slides[next].classList.add("active");
+slides[i].classList.remove("active");
+i=next;
+},2500);
+
+function toggleCard(el){
+document.querySelectorAll(".card").forEach(c=>{
+if(c!==el){c.classList.remove("active");}
+});
+el.classList.toggle("active");
+}
+
+const cta=document.querySelector(".floating-cta");
+
+window.addEventListener("scroll",()=>{
+if(window.scrollY>400){
+cta.style.opacity="1";
+cta.style.pointerEvents="auto";
+}else{
+cta.style.opacity="0";
+cta.style.pointerEvents="none";
+}
+});
+</script>
+
+</body>
+</html>
