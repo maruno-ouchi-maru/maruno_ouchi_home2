@@ -31,7 +31,7 @@ body{
   border-radius:40px;
   padding:50px 35px;
   box-shadow:0 10px 40px rgba(100,140,200,0.15);
-  overflow: hidden; /* はみ出し防止 */
+  overflow: hidden;
 }
 
 /* 上部ナビ */
@@ -101,28 +101,34 @@ body{
   font-weight:700;
 }
 
-/* 改行調整用のクラス */
-.keep-all {
-  display: inline-block;
-  word-break: keep-all; /* 基本は単語で区切らない */
-}
-
+/* タイトル設定 */
 .hero h1 {
-  font-size: 2.1rem;
+  font-size: 2.2rem;
   color: #2c5aa0;
   margin-bottom: 20px;
-  line-height: 1.5;
+  line-height: 1.4;
+  white-space: nowrap; 
 }
 
+.hero h1 span.sub-name {
+  display: block; 
+  font-size: 2.2rem;
+}
+
+/* メッセージ設定 */
 .hero-message {
   font-family: 'Yomogi', cursive;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   color: #2c5aa0;
   text-align: center;
-  line-height: 1.9;
+  line-height: 1.8;
   margin-top: 10px;
   margin-bottom: 25px;
-  padding: 0 10px;
+}
+
+.hero-message span {
+  display: block; 
+  white-space: nowrap; 
 }
 
 .cta-btn{
@@ -159,7 +165,7 @@ section{margin-bottom:55px;}
   margin:0 auto;
 }
 
-/* プロフィールセクション */
+/* プロフィール */
 .profile-box{
   background: #fff;
   border: 2px solid #d8e9ff;
@@ -252,7 +258,7 @@ section{margin-bottom:55px;}
   color: #2c5aa0;
 }
 
-/* メニューカード */
+/* メニュー */
 .cards{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -332,22 +338,27 @@ section{margin-bottom:55px;}
   box-shadow: 0 5px 20px rgba(0,0,0,0.2);
 }
 
-/* レスポンシブ */
+/* レスポンシブ調整 */
 @media(max-width:600px){
+  .main { padding: 40px 20px; }
   .header-flex{flex-direction:column; gap: 20px;}
   .mini-slider{width:180px;height:180px;}
-  .hero h1{font-size: 1.5rem; line-height: 1.6;}
+
+  .hero h1 { 
+    font-size: 5.4vw; 
+  }
+  .hero h1 span.sub-name {
+    font-size: 7vw;
+    margin-top: 5px;
+  }
+
+  .hero-message {
+    font-size: 3.6vw; 
+    padding: 0;
+  }
+
   .cards{grid-template-columns:1fr;}
   .floating-cta a{width:90vw; text-align:center; display: block;}
-  
-  /* スマホでは突き抜け防止のため単語改行を許可 */
-  .keep-all {
-    word-break: break-word; 
-    display: inline;
-  }
-  .hero-message {
-    font-size: 1.1rem;
-  }
 }
 </style>
 </head>
@@ -356,14 +367,12 @@ section{margin-bottom:55px;}
 
 <div class="main">
 
-  <!-- TOPリンク -->
   <div class="top-link">
     <a href="https://maruno-ouchi-maru.github.io/maruno_ouchi_home/" target="_blank">
       学習塾まるのおうちはこちら
     </a>
   </div>
 
-  <!-- HERO -->
   <div class="hero">
     <div class="header-flex">
       <img src="logo.png" class="logo" alt="まるのおうち ロゴ">
@@ -382,176 +391,9 @@ section{margin-bottom:55px;}
 
     <div class="badge">元小学校教諭による先生サポート</div>
     
-    <!-- 1. 見出しの修正：一行にまとめて「｜」を削除、２行目にまるのおうち -->
     <h1>
-      若手教員の相談・授業サポート<br>
-      まるのおうち
+      若手教員の相談・授業サポート
+      <span class="sub-name">まるのおうち</span>
     </h1>
 
-    <!-- 2. メッセージ：はみ出し防止のためspanを解除してbrで調整 -->
-    <p class="hero-message">
-      子どもをまるごと受けとめるように、<br>
-      先生の悩みも、まるごと受けとめたい。
-    </p>
-    
-    <a href="https://forms.gle/7sFxEHVQr9X4b1eM8" class="cta-btn">少し話してみる</a>
-    
-    <p class="info-note" style="line-height: 1.6;">
-      ※秘密厳守。<br>
-      職場の誰かに知られることはありません。
-    </p>
-  </div>
-
-  <!-- プロフィール -->
-  <section>
-    <h2 class="title">サポートする人</h2>
-    <div class="content-narrow">
-      <div class="profile-box" onclick="toggleProfile(this)">
-        <img src="owner.png" alt="りょうこ" class="profile-img">
-        <div class="profile-name">りょうこ</div>
-        <p class="profile-intro">元小学校教員（8年間勤務）</p>
-        <div class="profile-toggle-btn">プロフィールを読む ▼</div>
-        
-        <div class="profile-content">
-          <div class="profile-text">
-            元小学校教員として8年間、子どもたちと向き合ってきました。<br><br>
-            その中でずっと感じていたのは、<br>
-            「先生が安心して相談できる場所の少なさ」です。<br><br>
-            授業のこと、学級のこと、人間関係のこと。<br>
-            学校では言いにくいことほど、一人で抱え込みやすい。<br><br>
-            私自身も、誰にも言えずにしんどくなった経験があります。<br><br>
-            だからこそ、<br>
-            がんばりすぎてしまう先生が<br>
-            少しでも気持ちを話せる場所をつくりたいと思い、<br>
-            “まるのおうち”を始めました。<br><br>
-            うまく話せなくても大丈夫。<br>
-            まとまっていなくても大丈夫。<br><br>
-            あなたのペースで、<br>
-            あなたのままで来てもらえたら嬉しいです。
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- お悩み -->
-  <section>
-    <h2 class="title">こんなお悩みに</h2>
-    <div class="content-narrow">
-      <div class="trouble">
-        <ul>
-          <li>授業の準備が終わらない、進め方に自信がない</li>
-          <li>学級がザワついて、指示が通らなくなってきた</li>
-          <li>
-            <span class="keep-all">職員室での人間関係や、</span><br>
-            <span class="keep-all">保護者対応がしんどい</span>
-          </li>
-          <li>
-            <span class="keep-all">誰かに相談したいけど、</span><br>
-            <span class="keep-all">弱音を吐ける人がいない</span>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- メニュー -->
-  <section>
-    <h2 class="title">サポートメニュー</h2>
-    <p style="text-align: center; margin-bottom: 20px; font-size: 0.9rem; color: #666;">（クリックで詳細を表示します）</p>
-
-    <div class="cards">
-      <div class="card" onclick="toggleCard(this)">
-        <h3>🌱 はじめての先生相談</h3>
-        <p class="price">15分 ／ 1,000円</p>
-        <div class="card-detail">
-          まずは少しだけ話してみたい方向け。悩みがまとまっていなくても大丈夫です。
-        </div>
-      </div>
-
-      <div class="card" onclick="toggleCard(this)">
-        <h3>📘 授業ふり返りサポート</h3>
-        <p class="price">60分 ／ 5,000円</p>
-        <div class="card-detail">
-          授業の流れを一緒に確認し、次に繋がるポイントを整理します。ダメ出しではなく、先生の強みを見つける時間です。
-        </div>
-      </div>
-
-      <div class="card" onclick="toggleCard(this)">
-        <h3>🏫 学級経営もやもや整理</h3>
-        <p class="price">45分 ／ 3,500円</p>
-        <div class="card-detail">
-          子どもとの関わり方、ルールの作り方。現場の状況に合わせた具体的な工夫を一緒に考えます。
-        </div>
-      </div>
-
-      <div class="card" onclick="toggleCard(this)">
-        <h3>☕ 先生のための面談</h3>
-        <p class="price">30分 ／ 2,500円</p>
-        <div class="card-detail">
-          自信がない、辞めたい…そんな心のうちを安心して出せる時間です。
-        </div>
-      </div>
-    </div>
-    
-    <div class="info-note">
-      お支払い方法：銀行振込 / PayPay など（詳細は面談時にご案内します）
-    </div>
-  </section>
-
-</div>
-
-<div class="floating-cta">
-  <a href="https://forms.gle/7sFxEHVQr9X4b1eM8">少し話してみる</a>
-</div>
-
-<script>
-window.addEventListener('DOMContentLoaded', () => {
-  const slides = document.querySelectorAll(".mini-slide");
-  const totalSlides = slides.length;
-  let currentIdx = 0;
-
-  if (totalSlides > 1) {
-    setInterval(() => {
-      const nextIdx = (currentIdx + 1) % totalSlides;
-      slides[currentIdx].classList.remove("active");
-      slides[nextIdx].classList.add("active");
-      currentIdx = nextIdx;
-    }, 2500);
-  }
-});
-
-function toggleProfile(el) {
-  el.classList.toggle("active");
-  const btn = el.querySelector(".profile-toggle-btn");
-  if (el.classList.contains("active")) {
-    btn.textContent = "閉じる ▲";
-  } else {
-    btn.textContent = "プロフィールを読む ▼";
-  }
-}
-
-function toggleCard(el){
-  const isActive = el.classList.contains("active");
-  document.querySelectorAll(".card").forEach(c=>{
-    c.classList.remove("active");
-  });
-  if(!isActive){
-    el.classList.add("active");
-  }
-}
-
-const cta=document.querySelector(".floating-cta");
-window.addEventListener("scroll",()=>{
-  if(window.scrollY>400){
-    cta.style.opacity="1";
-    cta.style.pointerEvents="auto";
-  }else{
-    cta.style.opacity="0";
-    cta.style.pointerEvents="none";
-  }
-});
-</script>
-
-</body>
-</html>
+    <p class
