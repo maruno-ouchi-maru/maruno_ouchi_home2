@@ -31,7 +31,7 @@ body{
   border-radius:40px;
   padding:50px 35px;
   box-shadow:0 10px 40px rgba(100,140,200,0.15);
-  overflow: hidden; /* はみ出し防止 */
+  overflow: hidden;
 }
 
 /* 上部ナビ */
@@ -101,28 +101,34 @@ body{
   font-weight:700;
 }
 
-/* 改行調整用のクラス */
-.keep-all {
-  display: inline-block;
-  word-break: keep-all; /* 基本は単語で区切らない */
-}
-
+/* タイトル設定 */
 .hero h1 {
-  font-size: 2.1rem;
+  font-size: 2.2rem;
   color: #2c5aa0;
   margin-bottom: 20px;
-  line-height: 1.5;
+  line-height: 1.4;
+  white-space: nowrap; 
 }
 
+.hero h1 span.sub-name {
+  display: block; 
+  font-size: 2.2rem;
+}
+
+/* メッセージ設定 */
 .hero-message {
   font-family: 'Yomogi', cursive;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   color: #2c5aa0;
   text-align: center;
-  line-height: 1.9;
+  line-height: 1.8;
   margin-top: 10px;
   margin-bottom: 25px;
-  padding: 0 10px;
+}
+
+.hero-message span {
+  display: block; 
+  white-space: nowrap; 
 }
 
 .cta-btn{
@@ -143,6 +149,17 @@ body{
   background:#3a75c4;
 }
 
+/* 改行調整用の共通クラス */
+.keep-all {
+  display: inline-block;
+  word-break: keep-all;
+}
+
+/* PCでは改行を非表示にする設定 */
+.sp-br {
+  display: none;
+}
+
 /* 共通セクション */
 section{margin-bottom:55px;}
 
@@ -159,7 +176,7 @@ section{margin-bottom:55px;}
   margin:0 auto;
 }
 
-/* プロフィールセクション */
+/* プロフィール */
 .profile-box{
   background: #fff;
   border: 2px solid #d8e9ff;
@@ -252,7 +269,7 @@ section{margin-bottom:55px;}
   color: #2c5aa0;
 }
 
-/* メニューカード */
+/* メニュー */
 .cards{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -332,22 +349,32 @@ section{margin-bottom:55px;}
   box-shadow: 0 5px 20px rgba(0,0,0,0.2);
 }
 
-/* レスポンシブ */
+/* レスポンシブ調整 */
 @media(max-width:600px){
+  .main { padding: 40px 20px; }
   .header-flex{flex-direction:column; gap: 20px;}
   .mini-slider{width:180px;height:180px;}
-  .hero h1{font-size: 1.5rem; line-height: 1.6;}
-  .cards{grid-template-columns:1fr;}
-  .floating-cta a{width:90vw; text-align:center; display: block;}
-  
-  /* スマホでは突き抜け防止のため単語改行を許可 */
-  .keep-all {
-    word-break: break-word; 
+
+  .hero h1 { 
+    font-size: 5.4vw; 
+  }
+  .hero h1 span.sub-name {
+    font-size: 7vw;
+    margin-top: 5px;
+  }
+
+  .hero-message {
+    font-size: 3.6vw; 
+    padding: 0;
+  }
+
+  /* スマホの時だけ改行を有効にする */
+  .sp-br {
     display: inline;
   }
-  .hero-message {
-    font-size: 1.1rem;
-  }
+
+  .cards{grid-template-columns:1fr;}
+  .floating-cta a{width:90vw; text-align:center; display: block;}
 }
 </style>
 </head>
@@ -356,7 +383,6 @@ section{margin-bottom:55px;}
 
 <div class="main">
 
-  <!-- TOPリンク -->
   <div class="top-link">
     <a href="https://maruno-ouchi-maru.github.io/maruno_ouchi_home/" target="_blank">
       学習塾まるのおうちはこちら
@@ -382,16 +408,14 @@ section{margin-bottom:55px;}
 
     <div class="badge">元小学校教諭による先生サポート</div>
     
-    <!-- 1. 見出しの修正：一行にまとめて「｜」を削除、２行目にまるのおうち -->
     <h1>
-      若手教員の相談・授業サポート<br>
-      まるのおうち
+      若手教員の相談・授業サポート
+      <span class="sub-name">まるのおうち</span>
     </h1>
 
-    <!-- 2. メッセージ：はみ出し防止のためspanを解除してbrで調整 -->
     <p class="hero-message">
-      子どもをまるごと受けとめるように、<br>
-      先生の悩みも、まるごと受けとめたい。
+      <span>子どもをまるごと受けとめるように、</span>
+      <span>先生の悩みも、まるごと受けとめたい。</span>
     </p>
     
     <a href="https://forms.gle/7sFxEHVQr9X4b1eM8" class="cta-btn">少し話してみる</a>
@@ -443,11 +467,11 @@ section{margin-bottom:55px;}
           <li>授業の準備が終わらない、進め方に自信がない</li>
           <li>学級がザワついて、指示が通らなくなってきた</li>
           <li>
-            <span class="keep-all">職員室での人間関係や、</span><br>
+            <span class="keep-all">職員室での人間関係や、</span><br class="sp-br">
             <span class="keep-all">保護者対応がしんどい</span>
           </li>
           <li>
-            <span class="keep-all">誰かに相談したいけど、</span><br>
+            <span class="keep-all">誰かに相談したいけど、</span><br class="sp-br">
             <span class="keep-all">弱音を吐ける人がいない</span>
           </li>
         </ul>
@@ -495,7 +519,8 @@ section{margin-bottom:55px;}
     </div>
     
     <div class="info-note">
-      お支払い方法：銀行振込 / PayPay など（詳細は面談時にご案内します）
+      お支払い方法：銀行振込のみ（事前払い）<br>
+      ※振込先は面談確定時に個別にご案内します
     </div>
   </section>
 
